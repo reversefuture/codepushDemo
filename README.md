@@ -95,3 +95,54 @@ To learn more about React Native, take a look at the following resources:
 - [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
 - [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
 - [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+
+# Code push
+https://learn.microsoft.com/en-us/appcenter/distribution/codepush/
+https://github.com/microsoft/code-push-server/blob/main/api/README.md
+https://github.com/microsoft/code-push-server/blob/main/cli/README.md
+
+## Get Started with the React Native Client SDK
+https://github.com/microsoft/react-native-code-push/blob/master/docs/setup-android.md
+https://learn.microsoft.com/en-us/appcenter/distribution/codepush/rn-get-started
+
+## Release update
+1. npm install -g appcenter-cli
+
+2. CodePush-ify your app
+
+3. Release an app update
+appcenter codepush release-react -a <ownerName>/<appName>
+
+# app center 命令
+appcenter apps list
+
+Create a New App：
+appcenter apps create -p <platform> -o <owner> -n <appname> -d <description>
+
+List Deployments:
+appcenter codepush deployment list -a <owner/appname>
+
+Add a New Deployment:
+appcenter codepush deployment add -a <owner/appname> <deployment_name>
+
+Release a CodePush Update:
+appcenter codepush release-react -a <owner/appname> -d <deployment_name>
+appcenter codepush release-react -a <ownerName>/MyApp-iOS
+appcenter codepush release-react -a <ownerName>/MyApp-Android
+
+>deployment_name: staging ...
+
+Check Deployment History：
+appcenter codepush deployment history -a <owner/appname> <deployment_name>
+
+Remove a Deployment:
+appcenter codepush deployment remove -a <owner/appname> <deployment_name>
+
+Promote a Release: To promote a release from one deployment to another:
+appcenter codepush promote -a <owner/appname> -s <source_deployment> -d <destination_deployment>
+
+Rollback a Release:
+appcenter codepush rollback -a <owner/appname> <deployment_name>
+
+# Azure pipeline
+https://learn.microsoft.com/zh-cn/azure/devops/pipelines/ecosystems/android?view=azure-devops

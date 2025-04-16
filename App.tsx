@@ -21,13 +21,8 @@ import {
 } from 'react-native';
 import {WebView, WebViewMessageEvent} from 'react-native-webview';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+import {Colors} from 'react-native/Libraries/NewAppScreen';
+import codePush from 'react-native-code-push';
 
 type SectionProps = PropsWithChildren<{
   title: string;
@@ -137,8 +132,8 @@ function App(): React.JSX.Element {
           source={{
             uri: 'https://web-scan-lac.vercel.app/',
             headers: {
-              'Access-Control-Allow-Origin': '*'
-            }
+              'Access-Control-Allow-Origin': '*',
+            },
           }}
           style={{flex: 1}}
           javaScriptEnabled={true}
@@ -148,16 +143,16 @@ function App(): React.JSX.Element {
           mixedContentMode="always"
           onMessage={onMessage}
           injectedJavaScript={injectedJavaScript}
-          onError={(syntheticEvent) => {
-            const { nativeEvent } = syntheticEvent;
+          onError={syntheticEvent => {
+            const {nativeEvent} = syntheticEvent;
             console.warn('WebView error: ', nativeEvent);
           }}
-          onHttpError={(syntheticEvent) => {
-            const { nativeEvent } = syntheticEvent;
+          onHttpError={syntheticEvent => {
+            const {nativeEvent} = syntheticEvent;
             console.warn('WebView HTTP error: ', nativeEvent);
           }}
           originWhitelist={['*']}
-          onShouldStartLoadWithRequest={(request) => {
+          onShouldStartLoadWithRequest={request => {
             return true;
           }}
         />
@@ -198,4 +193,5 @@ const styles = StyleSheet.create({
   },
 });
 
-export default App;
+const MyApp = codePush(App);
+export default MyApp;

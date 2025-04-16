@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">RNWebViewDemo</string>
+    <string moduleConfig="true" name="CodePushServerUrl">http://localhost:3000</string>
 </resources>
